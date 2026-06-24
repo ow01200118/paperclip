@@ -10,6 +10,7 @@ import { useDialogActions } from "../context/DialogContext";
 import { useBreadcrumbs } from "../context/BreadcrumbContext";
 import { queryKeys } from "../lib/queryKeys";
 import { GoalProperties } from "../components/GoalProperties";
+import { GoalProgressBar } from "../components/GoalProgressBar";
 import { GoalTree } from "../components/GoalTree";
 import { StatusBadge } from "../components/StatusBadge";
 import { InlineEditor } from "../components/InlineEditor";
@@ -174,6 +175,8 @@ export function GoalDetail() {
             return asset.contentPath;
           }}
         />
+
+        <GoalProgressBar goalId={goal.id} showLabel className="max-w-xs" />
       </div>
 
       <Tabs defaultValue="children">

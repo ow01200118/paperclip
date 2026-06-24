@@ -1,9 +1,16 @@
 import type { Goal } from "@paperclipai/shared";
 import { api } from "./client";
 
+export type GoalProgress = {
+  total: number;
+  done: number;
+  cancelled: number;
+};
+
 export const goalsApi = {
   list: (companyId: string) => api.get<Goal[]>(`/companies/${companyId}/goals`),
   get: (id: string) => api.get<Goal>(`/goals/${id}`),
+  getProgress: (id: string) => api.get<GoalProgress>(`/goals/${id}/progress`),
   create: (companyId: string, data: Record<string, unknown>) =>
     api.post<Goal>(`/companies/${companyId}/goals`, data),
   update: (id: string, data: Record<string, unknown>) => api.patch<Goal>(`/goals/${id}`, data),
