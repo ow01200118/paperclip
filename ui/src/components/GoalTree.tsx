@@ -1,6 +1,7 @@
 import type { Goal } from "@paperclipai/shared";
 import { Link } from "@/lib/router";
 import { StatusBadge } from "./StatusBadge";
+import { GoalProgressBar } from "./GoalProgressBar";
 import { ChevronRight } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useState } from "react";
@@ -45,6 +46,7 @@ function GoalNode({ goal, children, allGoals, depth, goalLink, onSelect }: GoalN
       )}
       <span className="text-xs text-muted-foreground capitalize">{goal.level}</span>
       <span className="flex-1 truncate">{goal.title}</span>
+      <GoalProgressBar goalId={goal.id} className="w-20 shrink-0" showLabel />
       <StatusBadge status={goal.status} />
     </>
   );
